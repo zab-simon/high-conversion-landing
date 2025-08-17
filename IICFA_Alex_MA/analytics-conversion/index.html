@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IICFA - Анализ конверсии с интерактивными графиками</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 24px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        
+        .title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 16px;
+        }
+        
+        .subtitle {
+            font-size: 1.25rem;
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 32px;
+        }
+        
+        .nav-container {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 8px;
+            padding: 8px;
+            display: flex;
+            gap: 8px;
+        }
+        
+        .nav-button {
+            padding: 12px 24px;
+            border-radius: 8px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: transparent;
+            color: rgba(255,255,255,0.7);
+        }
+        
+        .nav-button.active {
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+            color: white;
+        }
+        
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+        
+        .metric-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .metric-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        
+        .metric-title {
+            color: white;
+            font-weight: 600;
+        }
+        
+        .metric-icon {
+            font-size: 1.5rem;
+        }
+        
+        .metric-values {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .metric-row {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .metric-label {
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .metric-current {
+            color: #ef4444;
+            font-weight: bold;
+        }
+        
+        .metric-target {
+            color: #22c55e;
+            font-weight: bold;
+        }
+        
+        .metric-positive {
+            color: #22c55e;
+            font-weight: bold;
+        }
+        
+        .metric-negative {
+            color: #ef4444;
+            font-weight: bold;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 32px;
+        }
+        
+        .chart-card {
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+        
+        .chart-card.problems {
+            background: rgba(239, 68, 68, 0.1);
+            border-color: rgba(239, 68, 68, 0.3);
+        }
+        
+        .chart-card.solutions {
+            background: rgba(34, 197, 94, 0.1);
+            border-color: rgba(34, 197, 94, 0.3);
+        }
+        
+        .chart-card.forecast {
+            background: rgba(59, 130, 246, 0.1);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+        
+        .chart-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .chart-placeholder {
+            height: 300px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+        }
+        
+        .stat-card {
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid rgba(255,255,255,0.3);
+            text-align: center;
+        }
+        
+        .stat-card.revenue {
+            background: rgba(34, 197, 94, 0.1);
+            border-color: rgba(34, 197, 94, 0.3);
+        }
+        
+        .stat-card.payback {
+            background: rgba(59, 130, 246, 0.1);
+            border-color: rgba(59, 130, 246, 0.3);
+        }
+        
+        .stat-card.roi {
+            background: rgba(139, 92, 246, 0.1);
+            border-color: rgba(139, 92, 246, 0.3);
+        }
+        
+        .stat-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 16px;
+        }
+        
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .stat-value.green { color: #22c55e; }
+        .stat-value.blue { color: #3b82f6; }
+        .stat-value.purple { color: #8b5cf6; }
+        
+        .stat-desc {
+            color: rgba(255,255,255,0.8);
+        }
+        
+        .final-card {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(168, 85, 247, 0.2) 100%);
+            backdrop-filter: blur(10px);
+            border-radius: 16px;
+            padding: 32px;
+            border: 1px solid rgba(99, 102, 241, 0.3);
+            margin-top: 32px;
+        }
+        
+        .final-title {
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+        
+        .problems-list {
+            color: white;
+            margin: 20px 0;
+        }
+        
+        .problem-item {
+            background: rgba(255,255,255,0.1);
+            margin: 8px 0;
+            padding: 16px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .solutions-list {
+            color: white;
+            margin: 20px 0;
+        }
+        
+        .solution-item {
+            background: rgba(255,255,255,0.1);
+            margin: 8px 0;
+            padding: 16px;
+            border-radius: 8px;
+        }
+        
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Заголовок -->
+        <div class="header">
+            <h1 class="title">🚀 Анализ конверсии IICFA.ru</h1>
+            <p class="subtitle">Комплексный анализ и рекомендации для повышения конверсии</p>
+        </div>
+
+        <!-- Навигация -->
+        <div class="nav-tabs">
+            <div class="nav-container">
+                <button class="nav-button active" onclick="showTab('problems')">❌ Проблемы</button>
+                <button class="nav-button" onclick="showTab('solutions')">✅ Решения</button>
+                <button class="nav-button" onclick="showTab('forecast')">📈 Прогноз</button>
+                <button class="nav-button" onclick="showTab('priority')">🎯 Приоритеты</button>
+            </div>
+        </div>
+
+        <!-- Основные метрики -->
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-header">
+                    <h3 class="metric-title">Конверсия</h3>
+                    <div class="metric-icon">📈</div>
+                </div>
+                <div class="metric-values">
+                    <div class="metric-row">
+                        <span class="metric-label">Сейчас:</span>
+                        <span class="metric-current">0.8%</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Цель:</span>
+                        <span class="metric-target">3.5%</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Рост:</span>
+                        <span class="metric-positive">+337%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-header">
+                    <h3 class="metric-title">Лиды/день</h3>
+                    <div class="metric-icon">👥</div>
+                </div>
+                <div class="metric-values">
+                    <div class="metric-row">
+                        <span class="metric-label">Сейчас:</span>
+                        <span class="metric-current">2</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Цель:</span>
+                        <span class="metric-target">8</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Рост:</span>
+                        <span class="metric-positive">+300%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-header">
+                    <h3 class="metric-title">Качество лидов</h3>
+                    <div class="metric-icon">⭐</div>
+                </div>
+                <div class="metric-values">
+                    <div class="metric-row">
+                        <span class="metric-label">Сейчас:</span>
+                        <span class="metric-current">30</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Цель:</span>
+                        <span class="metric-target">65</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Рост:</span>
+                        <span class="metric-positive">+117%</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-header">
+                    <h3 class="metric-title">Время отклика</h3>
+                    <div class="metric-icon">⏱️</div>
+                </div>
+                <div class="metric-values">
+                    <div class="metric-row">
+                        <span class="metric-label">Сейчас:</span>
+                        <span class="metric-current">24ч</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Цель:</span>
+                        <span class="metric-target">2ч</span>
+                    </div>
+                    <div class="metric-row">
+                        <span class="metric-label">Улучшение:</span>
+                        <span class="metric-positive">-92%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Контент по табам -->
+        <div id="problems-content" class="tab-content">
+            <div class="content-grid">
+                <div class="chart-card problems">
+                    <h2 class="chart-title">⚠️ Критические проблемы</h2>
+                    <div class="problems-list">
+                        <div class="problem-item">
+                            <span>Нет CTA кнопок</span>
+                            <span style="color: #ff6b6b; font-weight: bold;">Критично: 95%</span>
+                        </div>
+                        <div class="problem-item">
+                            <span>Нет доверия (отзывы, кейсы)</span>
+                            <span style="color: #ff6b6b; font-weight: bold;">Критично: 90%</span>
+                        </div>
+                        <div class="problem-item">
+                            <span>Нет мобильной версии</span>
+                            <span style="color: #ff9999; font-weight: bold;">Высоко: 80%</span>
+                        </div>
+                        <div class="problem-item">
+                            <span>Плохая структура</span>
+                            <span style="color: #ffb3b3; font-weight: bold;">Средне: 75%</span>
+                        </div>
+                        <div class="problem-item">
+                            <span>Устаревший дизайн</span>
+                            <span style="color: #ffcccc; font-weight: bold;">Низко: 70%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-card problems">
+                    <h2 class="chart-title">📊 Сравнение с конкурентами</h2>
+                    <div class="problems-list">
+                        <div class="problem-item">
+                            <span>Конверсия сайта</span>
+                            <span style="color: #ff6b6b;">IICFA: 0.8% | Конкуренты: 2.8%</span>
+                        </div>
+                        <div class="problem-item">
+                            <span>Время загрузки</span>
+                            <span style="color: #ff6b6b;">IICFA: 4.2с | Конкуренты: 2.1с</span>
+                        </div>
+                        <div class="problem-item">
+                            <span>Мобильность</span>
+                            <span style="color: #ff6b6b;">IICFA: 20% | Конкуренты: 85%</span>
+                        </div>
+                        <div class="problem-item">
+                            <span>UX Score</span>
+                            <span style="color: #ff6b6b;">IICFA: 45 | Конкуренты: 78</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="solutions-content" class="tab-content hidden">
+            <div class="content-grid">
+                <div class="chart-card solutions">
+                    <h2 class="chart-title">✅ ROI решений</h2>
+                    <div class="solutions-list">
+                        <div class="solution-item">
+                            <h4 style="color: #4ade80; margin-bottom: 8px;">CTA кнопки - ROI: 320%</h4>
+                            <p>Стоимость: 50k ₽ | Время: 1 неделя</p>
+                        </div>
+                        <div class="solution-item">
+                            <h4 style="color: #4ade80; margin-bottom: 8px;">Редизайн - ROI: 280%</h4>
+                            <p>Стоимость: 300k ₽ | Время: 4 недели</p>
+                        </div>
+                        <div class="solution-item">
+                            <h4 style="color: #4ade80; margin-bottom: 8px;">Кейсы и отзывы - ROI: 250%</h4>
+                            <p>Стоимость: 100k ₽ | Время: 2 недели</p>
+                        </div>
+                        <div class="solution-item">
+                            <h4 style="color: #4ade80; margin-bottom: 8px;">Мобильная версия - ROI: 200%</h4>
+                            <p>Стоимость: 150k ₽ | Время: 3 недели</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-card solutions">
+                    <h2 class="chart-title">💰 Распределение бюджета</h2>
+                    <div class="solutions-list">
+                        <div class="solution-item">
+                            <div style="display: flex; justify-content: space-between;">
+                                <span style="color: #ff6b6b;">■ Дизайн и разработка</span>
+                                <span style="font-weight: bold;">500k ₽ (50%)</span>
+                            </div>
+                        </div>
+                        <div class="solution-item">
+                            <div style="display: flex; justify-content: space-between;">
+                                <span style="color: #45b7d1;">■ Интеграции</span>
+                                <span style="font-weight: bold;">200k ₽ (20%)</span>
+                            </div>
+                        </div>
+                        <div class="solution-item">
+                            <div style="display: flex; justify-content: space-between;">
+                                <span style="color: #4ecdc4;">■ Контент и копирайт</span>
+                                <span style="font-weight: bold;">150k ₽ (15%)</span>
+                            </div>
+                        </div>
+                        <div class="solution-item">
+                            <div style="display: flex; justify-content: space-between;">
+                                <span style="color: #f7dc6f;">■ Маркетинг</span>
+                                <span style="font-weight: bold;">150k ₽ (15%)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="forecast-content" class="tab-content hidden">
+            <div class="chart-card forecast">
+                <h2 class="chart-title">📈 Прогноз роста показателей</h2>
+                <div class="solutions-list">
+                    <div class="solution-item">
+                        <h4 style="color: #4ecdc4;">Конверсия по месяцам:</h4>
+                        <p>Сейчас: 0.8% → 1 мес: 2.0% → 3 мес: 2.8% → 6 мес: 3.5% → 12 мес: 4.2%</p>
+                    </div>
+                    <div class="solution-item">
+                        <h4 style="color: #ff6b6b;">Лиды в день:</h4>
+                        <p>Сейчас: 2 → 1 мес: 5 → 3 мес: 7 → 6 мес: 8 → 12 мес: 12</p>
+                    </div>
+                    <div class="solution-item">
+                        <h4 style="color: #f7dc6f;">Продажи в день:</h4>
+                        <p>Сейчас: 0.3 → 1 мес: 1.2 → 3 мес: 2.1 → 6 мес: 3.2 → 12 мес: 5.8</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="stats-grid" style="margin-top: 32px;">
+                <div class="stat-card revenue">
+                    <h3 class="stat-title">💰 Прогноз дохода</h3>
+                    <div class="stat-value green">+580%</div>
+                    <p class="stat-desc">Рост через 12 месяцев</p>
+                </div>
+                <div class="stat-card payback">
+                    <h3 class="stat-title">⏱️ Окупаемость</h3>
+                    <div class="stat-value blue">2-3 мес</div>
+                    <p class="stat-desc">Полная окупаемость</p>
+                </div>
+                <div class="stat-card roi">
+                    <h3 class="stat-title">📈 ROI</h3>
+                    <div class="stat-value purple">320%</div>
+                    <p class="stat-desc">Возврат инвестиций</p>
+                </div>
+            </div>
+        </div>
+
+        <div id="priority-content" class="tab-content hidden">
+            <div class="content-grid">
+                <div class="chart-card">
+                    <h2 class="chart-title">🎯 Матрица приоритетов</h2>
+                    <div style="background: rgba(255,255,255,0.1); border-radius: 8px; padding: 20px; height: 200px; position: relative;">
+                        <div style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); color: white; font-size: 14px;">
+                            Сложность реализации →
+                        </div>
+                        <div style="position: absolute; left: 10px; top: 50%; transform: translateY(-50%) rotate(-90deg); color: white; font-size: 14px;">
+                            ↑ Влияние на конверсию
+                        </div>
+                        <div style="position: absolute; left: 20%; bottom: 80%; width: 12px; height: 12px; background: #ff6b6b; border-radius: 50%;" title="CTA кнопки"></div>
+                        <div style="position: absolute; left: 30%; bottom: 75%; width: 12px; height: 12px; background: #ff6b6b; border-radius: 50%;" title="Контактные формы"></div>
+                        <div style="position: absolute; left: 40%; bottom: 70%; width: 12px; height: 12px; background: #4ecdc4; border-radius: 50%;" title="Лид-магниты"></div>
+                        <div style="position: absolute; left: 60%; bottom: 65%; width: 12px; height: 12px; background: #4ecdc4; border-radius: 50%;" title="Кейсы успеха"></div>
+                        <div style="position: absolute; left: 85%; bottom: 80%; width: 12px; height: 12px; background: #45b7d1; border-radius: 50%;" title="Редизайн сайта"></div>
+                    </div>
+                    <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 8px;">
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <div style="width: 12px; height: 12px; background: #ff6b6b; border-radius: 50%;"></div>
+                            <span style="color: white; font-size: 14px;">Высокий приоритет</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <div style="width: 12px; height: 12px; background: #4ecdc4; border-radius: 50%;"></div>
+                            <span style="color: white; font-size: 14px;">Средний приоритет</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <div style="width: 12px; height: 12px; background: #45b7d1; border-radius: 50%;"></div>
+                            <span style="color: white; font-size: 14px;">Низкий приоритет</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <h2 class="chart-title">⚡ План реализации</h2>
+                    <div style="display: flex; flex-direction: column; gap: 16px;">
+                        <div style="background: rgba(255,255,255,0.1); border-radius: 8px; padding: 16px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                <h4 style="color: white;">Этап 1</h4>
+                                <span style="color: rgba(255,255,255,0.8); font-size: 14px;">1-2 недели</span>
+                            </div>
+                            <p style="color: rgba(255,255,255,0.9); margin-bottom: 12px;">CTA кнопки, Контактные формы</p>
+                            <div style="width: 100%; background: #374151; border-radius: 8px; height: 8px;">
+                                <div style="height: 8px; border-radius: 8px; background: #ff6b6b; width: 100%;"></div>
+                            </div>
+                        </div>
+                        
+                        <div style="background: rgba(255,255,255,0.1); border-radius: 8px; padding: 16px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                <h4 style="color: white;">Этап 2</h4>
+                                <span style="color: rgba(255,255,255,0.8); font-size: 14px;">3-4 недели</span>
+                            </div>
+                            <p style="color: rgba(255,255,255,0.9); margin-bottom: 12px;">Кейсы успеха, Отзывы клиентов</p>
+                            <div style="width: 100%; background: #374151; border-radius: 8px; height: 8px;">
+                                <div style="height: 8px; border-radius: 8px; background: #4ecdc4; width: 75%;"></div>
+                            </div>
+                        </div>
+
+                        <div style="background: rgba(255,255,255,0.1); border-radius: 8px; padding: 16px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                <h4 style="color: white;">Этап 3</h4>
+                                <span style="color: rgba(255,255,255,0.8); font-size: 14px;">2 месяц</span>
+                            </div>
+                            <p style="color: rgba(255,255,255,0.9); margin-bottom: 12px;">Редизайн сайта, Аналитика</p>
+                            <div style="width: 100%; background: #374151; border-radius: 8px; height: 8px;">
+                                <div style="height: 8px; border-radius: 8px; background: #45b7d1; width: 50%;"></div>
+                            </div>
+                        </div>
+
+                        <div style="background: rgba(255,255,255,0.1); border-radius: 8px; padding: 16px;">
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
+                                <h4 style="color: white;">Этап 4</h4>
+                                <span style="color: rgba(255,255,255,0.8); font-size: 14px;">3 месяц</span>
+                            </div>
+                            <p style="color: rgba(255,255,255,0.9); margin-bottom: 12px;">SEO продвижение, CRM система</p>
+                            <div style="width: 100%; background: #374151; border-radius: 8px; height: 8px;">
+                                <div style="height: 8px; border-radius: 8px; background: #f7dc6f; width: 25%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Итоговые рекомендации -->
+        <div class="final-card">
+            <h2 class="final-title">🎯 Ключевые выводы и рекомендации</h2>
+            <div class="stats-grid">
+                <div style="text-align: center;">
+                    <div class="stat-value green">+580%</div>
+                    <p style="color: white;">Прогнозируемый рост продаж через год</p>
+                </div>
+                <div style="text-align: center;">
+                    <div class="stat-value blue">2-3 мес</div>
+                    <p style="color: white;">Срок окупаемости инвестиций</p>
+                </div>
+                <div style="text-align: center;">
+                    <div class="stat-value purple">320%</div>
+                    <p style="color: white;">ROI при полной реализации</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showTab(tabName) {
+            // Скрыть все табы
+            const allTabs = document.querySelectorAll('.tab-content');
+            allTabs.forEach(tab => tab.classList.add('hidden'));
+            
+            // Показать выбранный таб
+            document.getElementById(tabName + '-content').classList.remove('hidden');
+            
+            // Обновить кнопки навигации
+            const allButtons = document.querySelectorAll('.nav-button');
+            allButtons.forEach(btn => btn.classList.remove('active'));
+            
+            // Найти и активировать нужную кнопку
+            const buttons = document.querySelectorAll('.nav-button');
+            buttons.forEach(btn => {
+                if (btn.textContent.includes('Проблемы') && tabName === 'problems') btn.classList.add('active');
+                if (btn.textContent.includes('Решения') && tabName === 'solutions') btn.classList.add('active');
+                if (btn.textContent.includes('Прогноз') && tabName === 'forecast') btn.classList.add('active');
+                if (btn.textContent.includes('Приоритеты') && tabName === 'priority') btn.classList.add('active');
+            });
+        }
+        
+        // Инициализация - показать первый таб
+        document.addEventListener('DOMContentLoaded', function() {
+            showTab('problems');
+        });
+    </script>
+</body>
+</html>
