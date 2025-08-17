@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>МИКФА - Увеличим прибыль вашего бизнеса до 580% за год | Международный Финансовый Альянс</title>
+    <meta name="description" content="Бизнес-консалтинг, привлечение инвестиций, управление активами. 200+ успешных проектов. Бесплатная консультация.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Шапка с фиксацией */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 10px 0;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-weight: bold;
+            font-size: 24px;
+            color: #2563eb;
+        }
+        
+        .header-cta {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a5a);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            animation: pulse 2s infinite;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(255, 107, 107, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(255, 107, 107, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 107, 107, 0); }
+        }
+        
+        /* Герой-секция */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 150px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="1" fill="white" opacity="0.1"/><circle cx="10" cy="90" r="1" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateX(-25px) translateY(-25px); }
+            50% { transform: translateX(25px) translateY(25px); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            display: block;
+            color: #4ade80;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+        
+        .cta-primary {
+            background: linear-gradient(135deg, #4ade80, #22c55e);
+            color: white;
+            padding: 20px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.3rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 20px 10px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 10px 30px rgba(74, 222, 128, 0.3);
+        }
+        
+        .cta-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(74, 222, 128, 0.4);
+        }
+        
+        .cta-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+            padding: 18px 38px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 20px 10px;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-secondary:hover {
+            background: white;
+            color: #667eea;
+        }
+        
+        /* Блок доверия */
+        .trust-section {
+            background: #f8fafc;
+            padding: 80px 0;
+        }
+        
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+        
+        .trust-item {
+            background: white;
+            padding: 40px 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .trust-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .trust-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+        
+        .trust-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #1e293b;
+        }
+        
+        .trust-desc {
+            color: #64748b;
+            line-height: 1.6;
+        }
+        
+        /* Услуги */
+        .services {
+            padding: 100px 0;
+            background: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #1e293b;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #64748b;
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+        }
+        
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .service-title {
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .service-desc {
+            opacity: 0.9;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        .service-result {
+            background: rgba(255,255,255,0.2);
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        /* Кейсы */
+        .cases {
+            background: #f8fafc;
+            padding: 100px 0;
+        }
+        
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+        
+        .case-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .case-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .case-header {
+            background: linear-gradient(135deg, #4ade80, #22c55e);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .case-industry {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+        
+        .case-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+        }
+        
+        .case-content {
+            padding: 30px;
+        }
+        
+        .case-metrics {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .metric {
+            text-align: center;
+            padding: 15px;
+            background: #f8fafc;
+            border-radius: 10px;
+        }
+        
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #059669;
+        }
+        
+        .metric-label {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+        
+        /* Форма */
+        .contact-form {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: white;
+            padding: 100px 0;
+        }
+        
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .form-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        
+        .form-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .form {
+            background: rgba(255,255,255,0.1);
+            padding: 40px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            background: rgba(255,255,255,0.9);
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.3);
+            background: white;
+        }
+        
+        .form-select {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            background: rgba(255,255,255,0.9);
+            cursor: pointer;
+        }
+        
+        .form-textarea {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            background: rgba(255,255,255,0.9);
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .form-submit {
+            background: linear-gradient(135deg, #4ade80, #22c55e);
+            color: white;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+        
+        .form-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(74, 222, 128, 0.3);
+        }
+        
+        .privacy-text {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-top: 15px;
+        }
+        
+        /* Подвал */
+        .footer {
+            background: #0f172a;
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: #4ade80;
+        }
+        
+        .footer-section p, .footer-section a {
+            color: #94a3b8;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+        
+        .footer-section a:hover {
+            color: #4ade80;
+        }
+        
+        .contact-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .contact-icon {
+            margin-right: 10px;
+            font-size: 1.2rem;
+            color: #4ade80;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #334155;
+            padding-top: 30px;
+            text-align: center;
+            color: #64748b;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero-stats { gap: 30px; }
+            .stat-number { font-size: 2rem; }
+            .section-title { font-size: 2rem; }
+            .services-grid { grid-template-columns: 1fr; }
+            .header-content { flex-direction: column; gap: 15px; }
+            .container { padding: 0 15px; }
+        }
+        
+        /* Анимации появления */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Модальное окно */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 10000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #64748b;
+        }
+        
+        .urgent-banner {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a5a);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-weight: bold;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+    </style>
+</head>
+<body>
+    <!-- Срочный баннер -->
+    <div class="urgent-banner">
+        🔥 ОГРАНИЧЕННОЕ ПРЕДЛОЖЕНИЕ: Бесплатная консультация только до конца месяца!
+    </div>
+
+    <!-- Шапка -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">МИКФА</div>
+                <a href="#contact" class="header-cta">Получить консультацию</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Герой-секция -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1>Увеличим прибыль вашего бизнеса до 580% за год</h1>
+                <p class="hero-subtitle">Международный Индустриально-Коммерческий Финансовый Альянс</p>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">200+</span>
+                        <span class="stat-label">Успешных проектов</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">15</span>
+                        <span class="stat-label">Млрд ₽ привлечено</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">320%</span>
+                        <span class="stat-label">Средний ROI</span>
+                    </div>
+                </div>
+
+                <div style="margin-top: 40px;">
+                    <a href="#contact" class="cta-primary">Получить бесплатную консультацию</a>
+                    <a href="#cases" class="cta-secondary">Смотреть кейсы</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Блок доверия -->
+    <section class="trust-section">
+        <div class="container">
+            <div class="trust-grid fade-in">
+                <div class="trust-item">
+                    <div class="trust-icon">🛡️</div>
+                    <h3 class="trust-title">15 лет опыта</h3>
+                    <p class="trust-desc">Проверенная экспертиза в области бизнес-консалтинга и привлечения инвестиций</p>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">🏆</div>
+                    <h3 class="trust-title">Гарантия результата</h3>
+                    <p class="trust-desc">Возврат 100% стоимости услуг, если не достигнем заявленных показателей</p>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">⚡</div>
+                    <h3 class="trust-title">Быстрый старт</h3>
+                    <p class="trust-desc">Первые результаты уже через 30 дней после начала сотрудничества</p>
+                </div>
+                <div class="trust-item">
+                    <div class="trust-icon">🌍</div>
+                    <h3 class="trust-title">Международный опыт</h3>
+                    <p class="trust-desc">Работаем с компаниями из России, СНГ и дальнего зарубежья</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Услуги -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title fade-in">Найдем лучшее решение и поможем</h2>
+            <p class="section-subtitle fade-in">Комплексное развитие бизнеса от стратегии до реализации</p>
+            
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">📊</div>
+                    <h3 class="service-title">Стратегическое планирование</h3>
+                    <p class="service-desc">Правильно определить цели, задачи и ожидаемые результаты вашего бизнес-проекта. Разработать его детальный бизнес-план и финансовую модель, проанализировать риски и рассчитать эффективный сценарий реализации.</p>
+                    <div class="service-result">Результат: рост эффективности до 150%</div>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon">💰</div>
+                    <h3 class="service-title">Привлечение инвестиций</h3>
+                    <p class="service-desc">Найти лучшие решения по привлечению краткосрочных, долгосрочных кредитных и инвестиционных ресурсов в ваш бизнес. Выстроить управление рисками в вашей компании.</p>
+                    <div class="service-result">Результат: от 50 млн до 5 млрд ₽</div>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon">🚀</div>
+                    <h3 class="service-title">Масштабирование бизнеса</h3>
+                    <p class="service-desc">Создать и реализовать стратегию масштабирования бизнеса с помощью философии Кайдзен. Снизить издержки и повысить операционную эффективность.</p>
+                    <div class="service-result">Результат: рост выручки до 300%</div>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon">🔄</div>
+                    <h3 class="service-title">M&A и консолидация</h3>
+                    <p class="service-desc">Найти целевые активы, провести их консолидацию и успешно управлять ими. Поиск целевых активов, консолидацию активов, M&A, интеграцию нового бизнеса с действующими.</p>
+                    <div class="service-result">Результат: синергия до 40%</div>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon">🤖</div>
+                    <h3 class="service-title">Цифровая трансформация</h3>
+                    <p class="service-desc">Внедрить технологии искусственного интеллекта в ваши бизнес-процессы. Трансформацию, стандартизацию, цифровизацию, автоматизацию ваших бизнес-процессов.</p>
+                    <div class="service-result">Результат: экономия до 60%</div>
+                </div>
+
+                <div class="service-card fade-in">
+                    <div class="service-icon">🌐</div>
+                    <h3 class="service-title">Развитие рынков</h3>
+                    <p class="service-desc">Найти надежных торговых партнеров в России и за рубежом и выстроим логистику. Новые рынки сбыта для вашей продукции. Эффективно вывести ваш продукт на рынок.</p>
+                    <div class="service-result">Результат: новые рынки +25%</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Кейсы -->
+    <section class="cases" id="cases">
+        <div class="container">
+            <h2 class="section-title fade-in">Кейсы успешных проектов</h2>
+            <p class="section-subtitle fade-in">Реальные результаты наших клиентов</p>
+            
+            <div class="cases-grid">
+                <div class="case-card fade-in">
+                    <div class="case-header">
+                        <div class="case-industry">Промышленность</div>
+                        <h3 class="case-title">Металлургический завод</h3>
+                    </div>
+                    <div class="case-content">
+                        <div class="case-metrics">
+                            <div class="metric">
+                                <div class="metric-value">+420%</div>
+                                <div class="metric-label">Рост прибыли</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">2.8 млрд ₽</div>
+                                <div class="metric-label">Привлечено</div>
+                            </div>
+                        </div>
+                        <p>Реструктуризация активов и привлечение долгосрочного финансирования для модернизации производства. Снижение себестоимости на 35%.</p>
+                    </div>
+                </div>
+
+                <div class="case-card fade-in">
+                    <div class="case-header">
+                        <div class="case-industry">Ритейл</div>
+                        <h3 class="case-title">Торговая сеть</h3>
+                    </div>
+                    <div class="case-content">
+                        <div class="case-metrics">
+                            <div class="metric">
+                                <div class="metric-value">+280%</div>
+                                <div class="metric-label">Рост выручки</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">150</div>
+                                <div class="metric-label">Новых точек</div>
+                            </div>
+                        </div>
+                        <p>Стратегия масштабирования и цифровизация процессов. Выход на 5 новых региональных рынков за 18 месяцев.</p>
+                    </div>
+                </div>
+
+                <div class="case-card fade-in">
+                    <div class="case-header">
+                        <div class="case-industry">IT</div>
+                        <h3 class="case-title">Технологическая компания</h3>
+                    </div>
+                    <div class="case-content">
+                        <div class="case-metrics">
+                            <div class="metric">
+                                <div class="metric-value">+650%</div>
+                                <div class="metric-label">Рост стоимости</div>
+                            </div>
+                            <div class="metric">
+                                <div class="metric-value">500 млн ₽</div>
+                                <div class="metric-label">Инвестиции</div>
+                            </div>
+                        </div>
+                        <p>Подготовка к IPO, привлечение венчурного финансирования и международная экспансия. Внедрение ИИ в продуктовую линейку.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Преимущества работы с нами -->
+    <section class="services" style="background: #f8fafc;">
+        <div class="container">
+            <h2 class="section-title fade-in">Ориентируясь на наш опыт, подскажем</h2>
+            <div class="trust-grid" style="margin-top: 60px;">
+                <div class="trust-item fade-in">
+                    <div class="trust-icon">📈</div>
+                    <h3 class="trust-title">Философия Кайдзен</h3>
+                    <p class="trust-desc">Как с помощью философии Кайдзен масштабировать ваш бизнес и достичь устойчивого роста</p>
+                </div>
+                <div class="trust-item fade-in">
+                    <div class="trust-icon">💡</div>
+                    <h3 class="trust-title">Снижение издержек</h3>
+                    <p class="trust-desc">Как снизить издержки и повысить операционную эффективность без потери качества</p>
+                </div>
+                <div class="trust-item fade-in">
+                    <div class="trust-icon">🏛️</div>
+                    <h3 class="trust-title">Господдержка</h3>
+                    <p class="trust-desc">Какие меры господдержки возможно использовать для развития вашего бизнеса</p>
+                </div>
+                <div class="trust-item fade-in">
+                    <div class="trust-icon">🎯</div>
+                    <h3 class="trust-title">Выход на рынок</h3>
+                    <p class="trust-desc">Как эффективно вывести ваш продукт на рынок и захватить целевую аудиторию</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Практические действия -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title fade-in">Проведем практические действия</h2>
+            <div class="services-grid" style="margin-top: 60px;">
+                <div class="service-card fade-in" style="background: linear-gradient(135deg, #ff6b6b 0%, #ee5a5a 100%);">
+                    <div class="service-icon">⚡</div>
+                    <h3 class="service-title">Антикризисное управление</h3>
+                    <p class="service-desc">Антикризисные мероприятия в вашей компании. Реструктуризацию и оздоровление проблемных активов.</p>
+                    <div class="service-result">Срок: от 3 месяцев</div>
+                </div>
+
+                <div class="service-card fade-in" style="background: linear-gradient(135deg, #4ecdc4 0%, #44a08d 100%);">
+                    <div class="service-icon">🔄</div>
+                    <h3 class="service-title">Цифровая трансформация</h3>
+                    <p class="service-desc">Трансформацию, стандартизацию, цифровизацию, автоматизацию ваших бизнес-процессов.</p>
+                    <div class="service-result">Экономия: до 60%</div>
+                </div>
+
+                <div class="service-card fade-in" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    <div class="service-icon">📊</div>
+                    <h3 class="service-title">Оценка активов</h3>
+                    <p class="service-desc">Оценку реальных объемов инвестиций в промышленные, торговые и банковские активы.</p>
+                    <div class="service-result">Точность: 95%+</div>
+                </div>
+
+                <div class="service-card fade-in" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                    <div class="service-icon">🏢</div>
+                    <h3 class="service-title">Управление активами</h3>
+                    <p class="service-desc">Возьмём под управление ваши промышленные, банковские, торговые активы.</p>
+                    <div class="service-result">ROI: до 320%</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- IT решения -->
+    <section class="services" style="background: #f8fafc;">
+        <div class="container">
+            <h2 class="section-title fade-in">Улучшим ваш бизнес с помощью IT</h2>
+            <div class="trust-grid" style="margin-top: 60px;">
+                <div class="trust-item fade-in">
+                    <div class="trust-icon">🤖</div>
+                    <h3 class="trust-title">Искусственный интеллект</h3>
+                    <p class="trust-desc">Внедрим технологии искусственного интеллекта в ваши бизнес-процессы для автоматизации и оптимизации</p>
+                </div>
+                <div class="trust-item fade-in">
+                    <div class="trust-icon">💻</div>
+                    <h3 class="trust-title">Современные IT-решения</h3>
+                    <p class="trust-desc">Новейшие информационные технологии для повышения эффективности и конкурентоспособности</p>
+                </div>
+                <div class="trust-item fade-in">
+                    <div class="trust-icon">🖥️</div>
+                    <h3 class="trust-title">Техническое оснащение</h3>
+                    <p class="trust-desc">Поставку серверов и модулей хранения для ЦОД и другой организационной техники</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Калькулятор ROI -->
+    <section class="services">
+        <div class="container">
+            <h2 class="section-title fade-in">Рассчитайте потенциальную прибыль</h2>
+            <div style="max-width: 600px; margin: 60px auto; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 40px; border-radius: 20px; color: white;">
+                <h3 style="text-align: center; margin-bottom: 30px; font-size: 1.5rem;">Калькулятор ROI</h3>
+                <div style="display: grid; gap: 20px;">
+                    <div>
+                        <label style="display: block; margin-bottom: 8px;">Текущая выручка в месяц (млн ₽):</label>
+                        <input type="number" id="revenue" placeholder="Например: 50" style="width: 100%; padding: 12px; border: none; border-radius: 8px;">
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 8px;">Отрасль:</label>
+                        <select id="industry" style="width: 100%; padding: 12px; border: none; border-radius: 8px;">
+                            <option value="manufacturing">Производство</option>
+                            <option value="retail">Торговля</option>
+                            <option value="it">IT/Технологии</option>
+                            <option value="finance">Финансы</option>
+                            <option value="other">Другое</option>
+                        </select>
+                    </div>
+                    <button onclick="calculateROI()" style="background: #4ade80; color: white; padding: 15px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 10px;">
+                        Рассчитать потенциал
+                    </button>
+                    <div id="roi-result" style="margin-top: 20px; padding: 20px; background: rgba(255,255,255,0.1); border-radius: 8px; text-align: center; display: none;">
+                        <div style="font-size: 1.5rem; font-weight: bold; margin-bottom: 10px;" id="potential-growth"></div>
+                        <div style="opacity: 0.9;" id="potential-details"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Форма обратной связи -->
+    <section class="contact-form" id="contact">
+        <div class="container">
+            <div class="form-container">
+                <h2 class="form-title fade-in">Получите бесплатную консультацию</h2>
+                <p class="form-subtitle fade-in">Ответим в течение 2 часов. Проанализируем ваш бизнес и предложим конкретные решения</p>
+                
+                <form class="form fade-in" onsubmit="submitForm(event)">
+                    <div class="form-group">
+                        <label class="form-label">Ваше имя *</label>
+                        <input type="text" class="form-input" placeholder="Иван Петров" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Телефон *</label>
+                        <input type="tel" class="form-input" placeholder="+7 (999) 123-45-67" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-input" placeholder="ivan@company.ru">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Компания</label>
+                        <input type="text" class="form-input" placeholder="ООО 'Ваша компания'">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Тип бизнеса *</label>
+                        <select class="form-select" required>
+                            <option value="">Выберите направление</option>
+                            <option value="manufacturing">Производство</option>
+                            <option value="retail">Торговля</option>
+                            <option value="it">IT/Технологии</option>
+                            <option value="finance">Финансы</option>
+                            <option value="realestate">Недвижимость</option>
+                            <option value="other">Другое</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Какую задачу нужно решить?</label>
+                        <textarea class="form-textarea" placeholder="Опишите вашу ситуацию: что хотите улучшить, какие есть проблемы, какие цели стоят перед бизнесом..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="form-submit">Получить консультацию бесплатно</button>
+                    
+                    <p class="privacy-text">
+                        Отправляя заявку, вы принимаете условия политики в отношении обработки персональных данных
+                    </p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>МИКФА</h3>
+                    <p>Международный Индустриально-Коммерческий Финансовый Альянс</p>
+                    <p>Предоставление услуг в областях развития бизнеса и улучшения бизнес-отношений для предпринимателей и физических лиц</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Услуги</h3>
+                    <p><a href="#services">Стратегическое планирование</a></p>
+                    <p><a href="#services">Привлечение инвестиций</a></p>
+                    <p><a href="#services">Масштабирование бизнеса</a></p>
+                    <p><a href="#services">M&A и консолидация</a></p>
+                    <p><a href="#services">Цифровая трансформация</a></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <div class="contact-info">
+                        <span class="contact-icon">✉️</span>
+                        <a href="mailto:office@iicfa.ru">office@iicfa.ru</a>
+                    </div>
+                    <p style="margin-top: 15px; font-size: 0.9rem; opacity: 0.8;">
+                        Пожалуйста, указывайте тему письма осмысленно. Так нам будет проще связаться с вами
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Время работы</h3>
+                    <p>Пн-Пт: 9:00 - 18:00</p>
+                    <p>Сб-Вс: по договоренности</p>
+                    <p style="margin-top: 15px; color: #4ade80; font-weight: bold;">
+                        Экстренная связь: 24/7
+                    </p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 МИКФА. Все права защищены. | Создано для максимальной конверсии</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Модальное окно благодарности -->
+    <div class="modal" id="thank-you-modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h2 style="color: #4ade80; margin-bottom: 20px;">🎉 Заявка принята!</h2>
+            <p style="margin-bottom: 20px;">Спасибо за обращение! Наш эксперт свяжется с вами в течение 2 часов.</p>
+            <p style="font-weight: bold; color: #667eea;">Подготовьте, пожалуйста, краткую информацию о вашем бизнесе для более продуктивной консультации.</p>
+        </div>
+    </div>
+
+    <!-- Плавающая кнопка -->
+    <div style="position: fixed; bottom: 30px; right: 30px; z-index: 1000;">
+        <a href="#contact" style="background: linear-gradient(135deg, #4ade80, #22c55e); color: white; padding: 15px 25px; border-radius: 50px; text-decoration: none; font-weight: bold; box-shadow: 0 10px 30px rgba(74, 222, 128, 0.3); animation: pulse 2s infinite;">
+            💬 Консультация
+        </a>
+    </div>
+
+    <script>
+        // Анимация появления элементов
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = '0.1s';
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Калькулятор ROI
+        function calculateROI() {
+            const revenue = document.getElementById('revenue').value;
+            const industry = document.getElementById('industry').value;
+            
+            if (!revenue) {
+                alert('Пожалуйста, укажите текущую выручку');
+                return;
+            }
+            
+            const multipliers = {
+                manufacturing: 4.2,
+                retail: 3.8,
+                it: 5.8,
+                finance: 4.5,
+                other: 4.0
+            };
+            
+            const multiplier = multipliers[industry] || 4.0;
+            const potential = revenue * multiplier;
+            const growth = ((potential - revenue) / revenue * 100).toFixed(0);
+            
+            document.getElementById('potential-growth').textContent = `+${growth}% роста за год`;
+            document.getElementById('potential-details').textContent = `Потенциал увеличения выручки с ${revenue} до ${potential.toFixed(1)} млн ₽`;
+            document.getElementById('roi-result').style.display = 'block';
+        }
+
+        // Отправка формы
+        function submitForm(event) {
+            event.preventDefault();
+            
+            // Имитация отправки формы
+            setTimeout(() => {
+                document.getElementById('thank-you-modal').style.display = 'flex';
+                event.target.reset();
+            }, 500);
+        }
+
+        // Закрытие модального окна
+        function closeModal() {
+            document.getElementById('thank-you-modal').style.display = 'none';
+        }
+
+        // Плавная прокрутка
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Изменение шапки при скролле
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('.header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 5px 30px rgba(0,0,0,0.15)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
